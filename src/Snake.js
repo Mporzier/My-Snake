@@ -11,7 +11,7 @@ const getRandomCoordinates = () => {
 
 const initialState = {
   food: getRandomCoordinates(),
-  speed: 200,
+  speed: 100,
   direction: "RIGHT",
   snakeDots: [
     [0, 0],
@@ -109,12 +109,12 @@ class Snake extends Component {
   checkIfEat() {
     let head = this.state.snakeDots[this.state.snakeDots.length - 1];
     let food = this.state.food;
-    if (head[0] === food[0] && head[1] === food[1]) {
+    if (head[0] === food[0] * 2 && head[1] === food[1] * 2) {
       this.setState({
         food: getRandomCoordinates()
       });
       this.enlargeSnake();
-      this.increaseSpeed();
+      /*this.increaseSpeed();*/
     }
   }
 
@@ -136,13 +136,16 @@ class Snake extends Component {
 
   onGameOver() {
     //   alert(`Game Over. Snake length is ${this.state.snakeDots.length}`);
-    this.setState(initialState);
+    //  this.setState(initialState);
   }
 
   render() {
     return (
       <div className="gameCanvas">
-        <SnakeBody snakeDots={this.state.snakeDots} />
+        <SnakeBody
+          snakeDots={this.state.snakeDots}
+          direction={this.state.direction}
+        />
         <Food dot={this.state.food} />
       </div>
     );
