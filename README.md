@@ -1,6 +1,8 @@
 Simple snake game test.
 
+Missing lose conditions (going out of the board, snake eating itself ...) and a score counter.
 
+--------------------------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
